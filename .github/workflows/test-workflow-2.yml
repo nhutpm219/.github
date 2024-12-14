@@ -30,3 +30,15 @@ jobs:
         echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
     - id: print_config_path
       run: echo "the config-path is ${{ inputs.config-path }}"
+
+  verify-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Verify SECRET_VALUE
+      run: echo "The secret value is $SECRET_VALUE"
+      env:
+        SECRET_VALUE: ${{ secrets.TEST_SECRET }}
