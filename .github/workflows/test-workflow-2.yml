@@ -20,7 +20,7 @@ jobs:
     - uses: actions/labeler@v4
       with:
         repo-token: ${{ secrets.TEST_SECRET }}
-        configuration-path: ${{ inputs.pat_token }}
+        configuration-path: ${{ inputs.config-path }}
     - id: print_secret
       run: echo "the secret is ${{ inputs.pat_token }}"
     - id: print_config_path
