@@ -4,11 +4,15 @@ on:
   workflow_call:
     inputs:
       config-path:
-        required: true
+        description: 'A config-path passed from the caller workflow'
+        default: 'default config-path'
+        required: false
         type: string
     secrets:
-      token:
+      pat_token:
+        description: 'A token passed from the caller workflow'
         required: false
+        default: ${{ secrets.WORKFLOW_AUTOMATION_TOKEN }}
 
 jobs:
   triage:

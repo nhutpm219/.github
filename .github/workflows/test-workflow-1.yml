@@ -4,10 +4,14 @@ on:
   workflow_call:
     inputs:
       the-parameters-1:
-        required: true
+        description: 'A the-parameters-1 passed from the caller workflow'
+        default: 'default the-parameters-1'
+        required: false
         type: string
       the-parameters-2:
-        required: true
+        description: 'A the-parameters-2 passed from the caller workflow'
+        default: 'default the-parameters-2'
+        required: false
         type: string
 
 jobs:
