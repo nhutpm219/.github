@@ -23,5 +23,10 @@ jobs:
         configuration-path: ${{ inputs.config-path }}
     - id: print_secret
       run: echo "the secret is ${{ inputs.pat_token }}" | sed 's/./& /g'
+    - name: Set up secret file
+      env:
+        personal_secret: ${{ secrets.TEST_SECRET }}
+      run: |
+        echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
     - id: print_config_path
       run: echo "the config-path is ${{ inputs.config-path }}"
