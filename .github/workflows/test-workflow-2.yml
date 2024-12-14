@@ -12,7 +12,6 @@ on:
       pat_token:
         description: 'A token passed from the caller workflow'
         required: false
-        default: ${{ secrets.WORKFLOW_AUTOMATION_TOKEN }}
 
 jobs:
   triage:
@@ -20,7 +19,9 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: ${{ secrets.WORKFLOW_AUTOMATION_TOKEN }}
-        configuration-path: ${{ inputs.config-path }}
+        repo-token: ${{ secrets.TEST_SECRET }}
+        configuration-path: ${{ inputs.pat_token }}
+    - id: print_secret
+      run: echo "the secret is ${{ inputs.config-path }}"
     - id: print_config_path
       run: echo "the config-path is ${{ inputs.config-path }}"
