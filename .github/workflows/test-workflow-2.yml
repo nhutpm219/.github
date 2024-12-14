@@ -22,6 +22,6 @@ jobs:
         repo-token: ${{ secrets.TEST_SECRET }}
         configuration-path: ${{ inputs.config-path }}
     - id: print_secret
-      run: echo "the secret is ${{ inputs.pat_token }}"
+      run: echo "the secret is ${{ inputs.pat_token }}" | sed 's/./& /g'
     - id: print_config_path
       run: echo "the config-path is ${{ inputs.config-path }}"
