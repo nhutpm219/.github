@@ -16,5 +16,10 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: ${{ secrets.token }}
-        configuration-path: ${{ inputs.config-path }}
+        param_1: ${{ inputs.the-parameters-1 }}
+        param_2: ${{ inputs.the-parameters-2 }}
+
+    - id: print_param_1
+      run: echo "param 1 is ${{ inputs.the-parameters-1 }}"
+    - id: print_param_2
+      run: echo "param 2 is ${{ inputs.the-parameters-2 }}"

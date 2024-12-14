@@ -8,7 +8,7 @@ on:
         type: string
     secrets:
       token:
-        required: true
+        required: false
 
 jobs:
   triage:
@@ -16,5 +16,7 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: ${{ secrets.token }}
+        repo-token: ${{ secrets.WORKFLOW_AUTOMATION_TOKEN }}
         configuration-path: ${{ inputs.config-path }}
+    - id: print_config_path
+      run: echo "the config-path is ${{ inputs.config-path }}"
