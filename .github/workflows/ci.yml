@@ -31,4 +31,4 @@ jobs:
       - name: Print app-name and app-type
         run: echo "app-name is ${{ inputs.app-name }}, app-type is ${{ inputs.app-type }} "
       - name: Build and Push
-        use: nhutpm219/.github/.github/composite-hello-world-steps@master
+        uses: nhutpm219/.github/.github/composite-hello-world-steps@master
