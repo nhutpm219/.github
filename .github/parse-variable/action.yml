@@ -39,3 +39,7 @@ runs:
         echo "app-name=$app_name" >> $GITHUB_OUTPUT
         echo "app-type=$app_type" >> $GITHUB_OUTPUT
       shell: bash
+
+outputs:
+  app-name: ${{ steps.parse.outputs.app-name }}
+  app-type: ${{ steps.parse.outputs.app-type }}
