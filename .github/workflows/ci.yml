@@ -23,11 +23,12 @@ on:
 
 jobs:
   build-push:
+    name: Build and Push
     runs-on: ubuntu-latest
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
-    - name: Print app-name and app-type
-      run: echo "app-name is ${{ inputs.app-name }}, app-type is ${{ inputs.app-type }} "
-    - name: Build and Push
-      use: nhutpm219/.github/.github/composite-hello-world-steps@master
+      - id: Check out repository
+        uses: actions/checkout@v2
+      - id: Print app-name and app-type
+        run: echo "app-name is ${{ inputs.app-name }}, app-type is ${{ inputs.app-type }} "
+      - id: Build and Push
+        use: nhutpm219/.github/.github/composite-hello-world-steps@master
