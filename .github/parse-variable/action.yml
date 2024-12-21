@@ -1,0 +1,26 @@
+name: "Parse Variable"
+description: "Read variables from a YAML file and set them as outputs"
+inputs:
+  file:
+    description: 'The YAML file to parse'
+    required: true
+outputs:
+  app-name:
+    description: 'The application name'
+  app-type:
+    description: 'The application type'
+runs:
+  using: "composite"
+  steps:
+    - name: Install yq
+      run: |
+        sudo wget https://github.com/mikefarah/yq/releases/download/v4.9.8/yq_linux_amd64 -O /usr/bin/yq
+        sudo chmod +x /usr/bin/yq
+
+    - name: Read YAML file
+      id: parse
+      run: |
+        app_name=$(yq e '.app-name' ${{ inputs.file }})
+        app_type=$(yq e '.app-type' ${{ inputs.file }})
+        echo "::set-output name=app-name::$app_name"
+        echo "::set-output name=app-type::$app_type"
