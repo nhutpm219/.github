@@ -7,8 +7,10 @@ inputs:
 outputs:
   app-name:
     description: 'The application name'
+    value: ${{ steps.parse.outputs.app-name }}
   app-type:
     description: 'The application type'
+    value: ${{ steps.parse.outputs.app-type }}
 runs:
   using: "composite"
   steps:
