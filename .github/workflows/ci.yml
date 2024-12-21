@@ -26,9 +26,9 @@ jobs:
     name: Build and Push
     runs-on: ubuntu-latest
     steps:
-      - id: Check out repository
+      - name: Check out repository
         uses: actions/checkout@v2
-      - id: Print app-name and app-type
+      - name: Print app-name and app-type
         run: echo "app-name is ${{ inputs.app-name }}, app-type is ${{ inputs.app-type }} "
-      - id: Build and Push
+      - name: Build and Push
         use: nhutpm219/.github/.github/composite-hello-world-steps@master
