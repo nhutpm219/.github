@@ -31,5 +31,5 @@ runs:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
 
     - name: Run goodbye.sh
-      run: pwd && ls -al && ./.github/composite-hello-world-steps/scripts/goodbye.sh 
+      run: pushd .github && pwd && ls -al && ./.github/composite-hello-world-steps/scripts/goodbye.sh 
       shell: bash
