@@ -18,15 +18,24 @@ runs:
         sudo wget https://github.com/mikefarah/yq/releases/download/v4.9.8/yq_linux_amd64 -O /usr/bin/yq
         sudo chmod +x /usr/bin/yq
 
-    - name: Read YAML file
-      id: parse
-      shell: bash
+    - name: Debug file existence
       run: |
         if [ ! -f "${{ inputs.file }}" ]; then
           echo "File ${{ inputs.file }} does not exist."
           exit 1
+        else
+          echo "File ${{ inputs.file }} exists."
+          cat "${{ inputs.file }}"
         fi
-        app_name=$(yq e '.app-name' ${{ inputs.file }})
-        app_type=$(yq e '.app-type' ${{ inputs.file }})
+      shell: bash
+
+    - name: Read YAML file
+      id: parse
+      run: |
+        app_name=$(yq e '.app-name' "${{ inputs.file }}")
+        app_type=$(yq e '.app-type' "${{ inputs.file }}")
+        echo "App Name: $app_name"
+        echo "App Type: $app_type"
         echo "app-name=$app_name" >> $GITHUB_OUTPUT
         echo "app-type=$app_type" >> $GITHUB_OUTPUT
+      shell: bash
