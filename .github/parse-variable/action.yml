@@ -22,6 +22,10 @@ runs:
       id: parse
       shell: bash
       run: |
+        if [ ! -f "${{ inputs.file }}" ]; then
+          echo "File ${{ inputs.file }} does not exist."
+          exit 1
+        fi
         app_name=$(yq e '.app-name' ${{ inputs.file }})
         app_type=$(yq e '.app-type' ${{ inputs.file }})
         echo "app-name=$app_name" >> $GITHUB_OUTPUT
